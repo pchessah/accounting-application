@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div fxLayout="row" fxLayoutAlign="center center" fxFill>
+    <mat-card fxLayoutAlign="center center">
+      <form [formGroup]="logInForm" fxFill>
+        <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+  
+          <img src="../../../assets/images/calc-logo.png" alt="logo" />
+          <h5>Log In as Store Owner</h5>
+  
+          <input type="email" placeholder="Enter Email" formControlName="email" required>
+          <input type="password" placeholder="Enter Password" formControlName="password" required>
+          <button mat-raised-button (click)="logIn()" type="submit"> <i class="fas fa-store"></i>Login as Store Owner</button>
+       
+        </div>
+  
+        <div class="container" fxLayout="row" fxLayoutAlign="space-between" fxFill>
+          <a [routerLink]="['/sign-up']" routerLinkActive="router-link-active">No Account? Sign Up Here</a> <br>
+          <a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active">Forgot Password?</a>
+        </div>
+      </form>
+  
+    </mat-card>
+  
+  </div>
