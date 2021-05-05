@@ -1,6 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center" fxFill>
-    <mat-card fxLayoutAlign="center center">
-        <form [formGroup]="signUpForm" fxFill>
+    <mat-card fxLayout="column" fxLayoutAlign="center center">
+        <h3> <strong>Accounting App</strong> </h3>
+        <form  fxFill>
             <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
                 <img src="../../../assets/images/calc-logo.png" alt="logo" />
                 <h5>Sign Up</h5>
@@ -15,11 +16,11 @@
 
                 <input type="password" placeholder="Enter Password" formControlName="password" required>
 
-                <button mat-raised-button (click)="saveNewUser()" type="submit">
+                <button mat-raised-button type="submit">
                     <i class="fas fa-store"></i> Sign up as Store Owner
                 </button>
 
-                <button mat-raised-button (click)="saveNewUser()" type="submit">
+                <button mat-raised-button type="submit">
                     <i class="fas fa-hands-helping"></i> Sign up as Attendant
                 </button>
             </div>
