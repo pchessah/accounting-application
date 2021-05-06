@@ -9,6 +9,9 @@ import {MatCardModule} from '@angular/material/card';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './storeowner/dashboard/dashboard.component';
+import { StoreSetupComponent } from './storeowner/store-setup/store-setup.component';
+import { AddAttendantComponent } from './storeowner/add-attendant/add-attendant.component';
 
 const MATMODULES = [MatCardModule]
 
@@ -16,7 +19,10 @@ const MATMODULES = [MatCardModule]
   declarations: [
     AppComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    StoreSetupComponent,
+    AddAttendantComponent
   ],
   imports: [
     BrowserModule,

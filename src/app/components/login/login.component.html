@@ -9,7 +9,7 @@
   
           <input type="email" placeholder="Enter Email" formControlName="email" required>
           <input type="password" placeholder="Enter Password" formControlName="password" required>
-          <button mat-raised-button type="submit">
+          <button (click)="logIn()" mat-raised-button type="submit">
             <i class="fas fa-store"></i> Log in as Store Owner
         </button>
 

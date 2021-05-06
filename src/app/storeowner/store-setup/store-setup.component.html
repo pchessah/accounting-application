@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxFill>
+    <mat-card fxLayout="column" fxLayoutAlign="center center">
+        <h3> <strong>Set Up Your Store</strong> </h3>
+      <form  fxFill>
+        <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+
+          <input type="text" placeholder="Enter Store Name" formControlName="store-name" required>
+          <input type="text" placeholder="Enter Type of Store" formControlName="store-type" required>
+        
+
+        <button (click)="save()" mat-raised-button type="submit">
+            <i class="fas fa-forward"></i> Save/Next
+        </button>
+       
+        </div>
+  
+        <div class="container" fxLayout="row" fxLayoutAlign="space-between" fxFill>
+          <a [routerLink]="['/sign-up']" routerLinkActive="router-link-active">Cancel</a> <br>
+        </div>
+      </form>
+  
+    </mat-card>
+  
+  </div>

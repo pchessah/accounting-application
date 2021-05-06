@@ -1,0 +1,30 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxFill>
+    <mat-card fxLayout="column" fxLayoutAlign="center center">
+        <h3> <strong>Add Store Attendant</strong> </h3>
+        <form fxFill>
+            <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+
+                <input type="text" placeholder="Enter Attendant ID" formControlName="attendant-id" required>
+                <input type="password" placeholder="Enter Password" formControlName="attendant-password" required>
+
+
+                <button (click)="save()" mat-raised-button type="submit">
+                    <i class="fas fa-save"></i> Save/Next
+                </button>
+
+            </div>
+
+            <div class="container" fxLayout="row" fxLayoutAlign="space-between" fxFill>
+                <button class="back-btn" (click)="back()" mat-raised-button type="submit">
+                    <i class="fas fa-backward"></i> Back
+                </button> <br>
+
+                <button class="skip-btn" (click)="skip()" mat-raised-button type="submit">
+                    <i class="fas fa-forward"></i> Skip
+                </button>
+            </div>
+        </form>
+
+    </mat-card>
+
+</div>
