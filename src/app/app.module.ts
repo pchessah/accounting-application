@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './storeowner/dashboard/dashboard.component';
 import { StoreSetupComponent } from './storeowner/store-setup/store-setup.component';
 import { AddAttendantComponent } from './storeowner/add-attendant/add-attendant.component';
+import { AddProductComponent } from './storeowner/inventory/add-product/add-product.component';
+import { InventoryDashboardComponent } from './storeowner/inventory/inventory-dashboard/inventory-dashboard.component';
 
 const MATMODULES = [MatCardModule]
 
@@ -22,7 +24,9 @@ const MATMODULES = [MatCardModule]
     LoginComponent,
     DashboardComponent,
     StoreSetupComponent,
-    AddAttendantComponent
+    AddAttendantComponent,
+    AddProductComponent,
+    InventoryDashboardComponent
   ],
   imports: [
     BrowserModule,
