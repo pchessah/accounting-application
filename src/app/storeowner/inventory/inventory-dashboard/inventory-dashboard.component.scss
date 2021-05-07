@@ -1,0 +1,38 @@
+.dashboard-card{
+    margin: 5%;
+}
+
+.dashboard-card > mat-card-title{
+    font-size: small;
+}
+.info-cards{
+    padding: 20px 10px;
+    width: 30%;
+    margin: 3px;
+}
+
+.info-cards-holder{
+    flex-direction: row;
+    flex-wrap: wrap !important;
+}
+
+.menu-items > div{
+    background-color: aliceblue;
+    padding: 2% 1px;
+    margin: 10px 0px;
+    width: 100%;
+}
+
+i{
+    margin: 5px;
+    padding: 5px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    font-weight: 900;
+}
