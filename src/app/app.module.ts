@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { NgModule } from '@angular/core';
 import {FlexLayoutModule} from "@angular/flex-layout";
 
@@ -8,6 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -18,7 +20,7 @@ import { AddAttendantComponent } from './storeowner/add-attendant/add-attendant.
 import { AddProductComponent } from './storeowner/inventory/add-product/add-product.component';
 import { InventoryDashboardComponent } from './storeowner/inventory/inventory-dashboard/inventory-dashboard.component';
 
-const MATMODULES = [MatCardModule, MatTableModule, MatFormFieldModule,MatPaginatorModule]
+const MATMODULES = [MatCardModule, MatTableModule, MatFormFieldModule,MatPaginatorModule, MatInputModule]
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ const MATMODULES = [MatCardModule, MatTableModule, MatFormFieldModule,MatPaginat
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,
     ...MATMODULES
