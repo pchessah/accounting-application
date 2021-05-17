@@ -4,7 +4,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog'
-import { IproductData } from '../inventory-dashboard/inventory-dashboard.component'
+import { IproductData } from '../../../libs/interfaces/IproductData'
 
 @Component({
   selector: 'app-add-product',
