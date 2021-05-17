@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AddProductComponent } from '../add-product/add-product.component';
 
 export interface IproductData {
   stock_name: string
@@ -16,6 +18,13 @@ export interface IproductData {
   styleUrls: ['./inventory-dashboard.component.scss'],
 })
 export class InventoryDashboardComponent implements AfterViewInit {
+  singleProduct: IproductData = {
+    stock_name: '',
+    quantity: '',
+    buying_price: '',
+    selling_price: '',
+  }
+
   displayedColumns: string[] = [
     'stock_name',
     'quantity',
@@ -41,8 +50,21 @@ export class InventoryDashboardComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.productData)
+    
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddProductComponent, {
+      width: '400px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.singleProduct = result;
+    });
   }
 
   ngOnInit(): void {
@@ -64,15 +86,3 @@ export class InventoryDashboardComponent implements AfterViewInit {
   }
 }
 
-/** Builds and returns a new User. */
-// function createNewUser(id: number): UserData {
-//   const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-//       NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-//   return {
-//     //id: id.toString(),
-//    // name: name,
-//     //progress: Math.round(Math.random() * 100).toString(),
-//     //color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-//   };
-//}
