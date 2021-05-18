@@ -43,7 +43,7 @@
                    <!-- Edit Stock Column -->
                    <ng-container matColumnDef="edit_stock">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit Stock </th>
-                    <td mat-cell *matCellDef="let row"> <button mat-raised-button color="primary"><i class="far fa-edit"></i></button> </td>
+                    <td mat-cell *matCellDef="let row"> <button mat-raised-button color="primary" (click)="openDialog(row)"><i class="far fa-edit"></i></button> </td>
                   </ng-container>
               
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

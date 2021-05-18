@@ -1,0 +1,26 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxFill>
+    <mat-card fxLayout="column" fxLayoutAlign="center center">
+        <h3> <strong>Edit Stock</strong> </h3>
+      <form  fxFill>
+        <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+
+          <input type="text" placeholder="Enter Stock Name" formControlName="stock-name" required>
+          <input type="number" placeholder="Enter Quantity" formControlName="quantity" required>
+          <input type="number" placeholder="Enter Buying Price" formControlName="buying_price" required>
+          <input type="number" placeholder="Enter Selling Price" formControlName="selling_price" required>
+        
+
+        <button (click)="save()" mat-raised-button type="submit">
+            <i class="fas fa-save"></i> Save
+        </button>
+       
+        </div>
+  
+        <div class="container" fxLayout="row" fxLayoutAlign="space-between" fxFill>
+          <a [routerLink]="['/inventory-dashboard']" routerLinkActive="router-link-active">Cancel</a> <br>
+        </div>
+      </form>
+  
+    </mat-card>
+  
+  </div>
