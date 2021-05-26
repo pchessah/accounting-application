@@ -4,7 +4,7 @@ form {
   }
   
   mat-card {
-    width: 400px;
+    width: 450px;
     margin: 5px;
   }
   i {
@@ -34,7 +34,7 @@ form {
   button {
     padding: 7px 15px;
     border: none;
-    cursor: pointer;
+    cursor: pointer !important;
     width: 100%;
     border-radius: 2%;
     font-size: 12px;
@@ -62,5 +62,12 @@ form {
   .second-name-input,
   .first-name-input {
     width: 48% !important;
+  }
+
+  p{
+    color: red;
+    text-decoration: underline;
+    cursor: pointer !important;
+    
   }
   

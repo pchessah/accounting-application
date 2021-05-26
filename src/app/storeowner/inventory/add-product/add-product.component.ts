@@ -4,6 +4,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog'
+import { Router } from '@angular/router'
 import { IproductData } from '../../../libs/interfaces/IproductData'
 
 @Component({
@@ -15,6 +16,7 @@ export class AddProductComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddProductComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IproductData,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -23,5 +25,11 @@ export class AddProductComponent implements OnInit {
     this.dialogRef.close()
   }
 
-  save() {}
+  save() {
+    this.dialogRef.close()
+  }
+
+  cancel(){
+    this.dialogRef.close()
+  }
 }
