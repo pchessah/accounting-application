@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { IproductData } from "../../../libs/interfaces/IproductData"
+import { ViewSalesReportComponent } from '../view-sales-report/view-sales-report.component';
 
 @Component({
   selector: 'app-sales-dashboard',
@@ -69,6 +70,19 @@ export class SalesDashboardComponent implements OnInit {
 
   goToMainDashboard(){
     this.router.navigateByUrl("/dashboard")
+  }
+
+  viewSalesReport(){
+    const dialogRef = this.dialog.open(ViewSalesReportComponent, {
+      width: '400px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.singleProduct = result;
+    });
+
   }
 
 }

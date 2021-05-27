@@ -1,0 +1,70 @@
+/* Bordered form */
+form {
+    width: 75%;
+  }
+  
+  mat-card {
+    width: 450px;
+    margin: 5px;
+  }
+  i {
+    margin: 2%;
+  }
+  
+  label,
+  b {
+    font-size: smaller;
+  }
+  
+  /* Full-width inputs */
+  input[type="date"]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
+    background-color: rgb(237, 250, 255);
+  }
+  
+  /* Set a style for all buttons */
+  button {
+    padding: 7px 15px;
+    border: none;
+    cursor: pointer !important;
+    width: 100%;
+    border-radius: 2%;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  
+  /* Add a hover effect for buttons */
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+  }
+  
+  // logo
+
+  
+  a {
+    color: black;
+    font-size: 12px;
+  }
+  
+  .second-name-input,
+  .first-name-input {
+    width: 48% !important;
+  }
+
+  p{
+    color: red;
+    text-decoration: underline;
+    cursor: pointer !important;
+    
+  }
+  

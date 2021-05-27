@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'
-import { Routes, RouterModule } from '@angular/router'
+import { Routes, RouterModule, ExtraOptions } from '@angular/router'
 import { SignupComponent } from '../app/components/signup/signup.component'
 import { LoginComponent } from '../app/components/login/login.component'
 import { StoreSetupComponent } from './storeowner/store-setup/store-setup.component'
@@ -9,6 +9,7 @@ import { AddProductComponent } from './storeowner/inventory/add-product/add-prod
 import { InventoryDashboardComponent } from './storeowner/inventory/inventory-dashboard/inventory-dashboard.component'
 import { InventoryManagerComponent } from './storeowner/inventory/inventory-manager/inventory-manager.component'
 import { SalesDashboardComponent } from './storeowner/sales/sales-dashboard/sales-dashboard.component'
+import { SalesReportComponent } from './storeowner/sales/sales-report/sales-report.component'
 
 const routes: Routes = [
  
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'inventory-dashboard', component: InventoryDashboardComponent },
   { path: 'inventory-manager', component: InventoryManagerComponent },
   { path: 'sales-dashboard', component: SalesDashboardComponent},
+  { path: 'sales-report', component: SalesReportComponent},
 
   { path: 'sign-up', component: SignupComponent },
   { path: 'log-in', component: LoginComponent },
@@ -27,8 +29,14 @@ const routes: Routes = [
  
 ]
 
+const routerOptions: ExtraOptions = {
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled',
+  scrollOffset: [0, 64],
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

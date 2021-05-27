@@ -2,8 +2,8 @@
     <mat-card class="dashboard-card">
         <mat-card-title>Sales Dashboard</mat-card-title>
         <div class="info-cards-holder" fxLayout="row" fxLayoutAlign="space-between">
-             <mat-card class="info-cards">Add Sale</mat-card>
-            <mat-card class="info-cards"> View Sales Report</mat-card>
+             <mat-card class="info-cards"> <a [routerLink]="['/sales-dashboard']" fragment="product_to_sell">Add Sale</a></mat-card>
+            <mat-card class="info-cards" (click)="viewSalesReport()"> View Sales Report</mat-card>
             <mat-card class="info-cards">My Account</mat-card>
             <mat-card class="info-cards" (click)="goToMainDashboard()">Main Dashboard</mat-card>
         </div>

@@ -1,0 +1,22 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxFill>
+    <mat-card fxLayout="column" fxLayoutAlign="center center">
+        <h3> <strong>Choose Report Date</strong> </h3>
+      <form  fxFill>
+        <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+          <input type="date" placeholder="Enter Quantity" formControlName="date" required>
+        
+
+        <button (click)="save()" mat-raised-button type="submit">
+            <i class="fas fa-save"></i> Save
+        </button>
+       
+        </div>
+  
+        <div class="container" fxLayout="row" fxLayoutAlign="space-between" fxFill>
+          <p (click)="cancel()">Cancel</p> <br>
+        </div>
+      </form>
+  
+    </mat-card>
+  
+  </div>
