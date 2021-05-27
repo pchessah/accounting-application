@@ -1,1 +1,44 @@
-<p>sales-report works!</p>
+<div>
+    <mat-card class="dashboard-card">
+        <mat-card-title>Sales Report on {{ date }} </mat-card-title>
+        <div class="info-cards-holder" fxLayout="row" fxLayoutAlign="space-between">
+            <mat-card class="info-cards" (click)="pickDate()">Pick Date</mat-card>
+            <mat-card class="info-cards"> Sales Dashboard </mat-card>
+            <mat-card class="info-cards">My Account</mat-card>
+            <mat-card class="info-cards" (click)="goToMainDashboard()">Main Dashboard</mat-card>
+        </div>
+
+        <div>              
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+              
+                  <!-- Stock name Column -->
+                  <ng-container matColumnDef="stock_name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Stock Name </th>
+                    <td mat-cell *matCellDef="let row"> {{row.stock_name}} </td>
+                  </ng-container>
+              
+                  <!-- Quantity Column -->
+                  <ng-container matColumnDef="quantity">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+                    <td mat-cell *matCellDef="let row"> {{row.quantity}}</td>
+                  </ng-container>
+
+                  <!-- Selling price Column -->
+                  <ng-container matColumnDef="selling_price">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                    <td mat-cell *matCellDef="let row"> {{row.selling_price*row.quantity}} </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  
+                </table>
+                
+                <div class="total">Total: Ksh. <span> 640 </span></div>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+              </div>
+              
+        </div>
+    </mat-card>
+</div>
