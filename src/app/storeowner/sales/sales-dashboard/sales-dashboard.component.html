@@ -1,17 +1,17 @@
 <div>
     <mat-card class="dashboard-card">
-        <mat-card-title>Inventory Dashboard</mat-card-title>
+        <mat-card-title>Sales Dashboard</mat-card-title>
         <div class="info-cards-holder" fxLayout="row" fxLayoutAlign="space-between">
-            <mat-card class="info-cards" (click)="openDialog()">Add Product</mat-card>
-            <mat-card class="info-cards" (click)="openInventoryManager()" > Inventory Manager </mat-card>
+             <mat-card class="info-cards">Add Sale</mat-card>
+            <mat-card class="info-cards"> View Sales Report</mat-card>
             <mat-card class="info-cards">My Account</mat-card>
             <mat-card class="info-cards" (click)="goToMainDashboard()">Main Dashboard</mat-card>
         </div>
 
         <div>
             <mat-form-field>
-                <mat-label>Filter Inventory</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Guiness" #input>
+                <mat-label>Select Product to Sell</mat-label>
+                <input id="product_to_sell" matInput (keyup)="applyFilter($event)" placeholder="Ex. Guiness" #input>
               </mat-form-field>
               
               <div class="mat-elevation-z8">
@@ -26,19 +26,20 @@
                   <!-- Quantity Column -->
                   <ng-container matColumnDef="quantity">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
-                    <td mat-cell *matCellDef="let row"> {{row.quantity}}</td>
+                    <td mat-cell *matCellDef="let row"> <input type="number"/>  </td>
                   </ng-container>
               
-                  <!-- Buying price Column -->
-                  <ng-container matColumnDef="buying_price">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Buying Price </th>
-                    <td mat-cell *matCellDef="let row"> {{row.buying_price}} </td>
-                  </ng-container>
               
                   <!-- Selling price Column -->
                   <ng-container matColumnDef="selling_price">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Selling Price </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
                     <td mat-cell *matCellDef="let row"> {{row.selling_price}} </td>
+                  </ng-container>
+
+                   <!-- Add item Column -->
+                   <ng-container matColumnDef="add_item">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Add/Remove </th>
+                    <td mat-cell *matCellDef="let row"> <button>+</button>  <button>-</button></td>
                   </ng-container>
               
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -54,5 +55,7 @@
               </div>
               
         </div>
+
+       
     </mat-card>
 </div>

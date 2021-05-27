@@ -97,4 +97,8 @@ export class InventoryManagerComponent implements OnInit {
   goToInventoryDashboard() {
     this.router.navigateByUrl('/inventory-dashboard')
   }
+
+  goToMainDashboard(){
+    this.router.navigateByUrl("/dashboard")
+  }
 }

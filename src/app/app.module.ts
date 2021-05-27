@@ -21,7 +21,9 @@ import { AddAttendantComponent } from './storeowner/add-attendant/add-attendant.
 import { AddProductComponent } from './storeowner/inventory/add-product/add-product.component'
 import { InventoryDashboardComponent } from './storeowner/inventory/inventory-dashboard/inventory-dashboard.component';
 import { InventoryManagerComponent } from './storeowner/inventory/inventory-manager/inventory-manager.component';
-import { EditStockComponent } from './storeowner/inventory/edit-stock/edit-stock.component'
+import { EditStockComponent } from './storeowner/inventory/edit-stock/edit-stock.component';
+import { SalesDashboardComponent } from './storeowner/sales/sales-dashboard/sales-dashboard.component';
+import { AddSaleComponent } from './storeowner/sales/add-sale/add-sale.component'
 
 const MATMODULES = [
   MatDialogModule,
@@ -44,6 +46,8 @@ const MATMODULES = [
     InventoryDashboardComponent,
     InventoryManagerComponent,
     EditStockComponent,
+    SalesDashboardComponent,
+    AddSaleComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,18 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core'
-import { MatPaginator } from '@angular/material/paginator'
-import { MatSort } from '@angular/material/sort'
-import { MatTableDataSource } from '@angular/material/table'
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { AddProductComponent } from '../add-product/add-product.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { IproductData } from "../../../libs/interfaces/IproductData"
 
-
-
 @Component({
-  selector: 'app-inventory-dashboard',
-  templateUrl: './inventory-dashboard.component.html',
-  styleUrls: ['./inventory-dashboard.component.scss'],
+  selector: 'app-sales-dashboard',
+  templateUrl: './sales-dashboard.component.html',
+  styleUrls: ['./sales-dashboard.component.scss']
 })
-export class InventoryDashboardComponent implements AfterViewInit {
+export class SalesDashboardComponent implements OnInit {
+
   singleProduct: IproductData = {
     stock_name: '',
     quantity: '',
@@ -25,8 +23,8 @@ export class InventoryDashboardComponent implements AfterViewInit {
   displayedColumns: string[] = [
     'stock_name',
     'quantity',
-    'buying_price',
     'selling_price',
+    'add_item'
   ]
   productData: IproductData[] = [
     {
@@ -51,23 +49,6 @@ export class InventoryDashboardComponent implements AfterViewInit {
     this.dataSource = new MatTableDataSource(this.productData)
     
   }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(AddProductComponent, {
-      width: '400px',
-      data: {}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.singleProduct = result;
-    });
-  }
-
-  openInventoryManager(): void {
-    this.router.navigateByUrl("/inventory-manager")
-  }
-
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.productData)
   }
@@ -89,5 +70,5 @@ export class InventoryDashboardComponent implements AfterViewInit {
   goToMainDashboard(){
     this.router.navigateByUrl("/dashboard")
   }
-}
 
+}
