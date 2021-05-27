@@ -56,6 +56,10 @@ export class SalesReportComponent implements OnInit {
     this.router.navigateByUrl("/dashboard")
   }
 
+  goToSalesDashboard(){
+    this.router.navigateByUrl("/sales-dashboard")
+  }
+
   getCurrentDate(){
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
