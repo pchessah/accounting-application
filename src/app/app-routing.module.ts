@@ -10,9 +10,9 @@ import { InventoryDashboardComponent } from './storeowner/inventory/inventory-da
 import { InventoryManagerComponent } from './storeowner/inventory/inventory-manager/inventory-manager.component'
 import { SalesDashboardComponent } from './storeowner/sales/sales-dashboard/sales-dashboard.component'
 import { SalesReportComponent } from './storeowner/sales/sales-report/sales-report.component'
+import { ExpensesDashboardComponent } from './storeowner/expenses/expenses-dashboard/expenses-dashboard.component'
 
 const routes: Routes = [
- 
   { path: 'store-setup', component: StoreSetupComponent },
   { path: 'add-attendant', component: AddAttendantComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -20,20 +20,20 @@ const routes: Routes = [
   { path: 'add-product', component: AddProductComponent },
   { path: 'inventory-dashboard', component: InventoryDashboardComponent },
   { path: 'inventory-manager', component: InventoryManagerComponent },
-  { path: 'sales-dashboard', component: SalesDashboardComponent},
-  { path: 'sales-report', component: SalesReportComponent},
+  { path: 'sales-dashboard', component: SalesDashboardComponent },
+  { path: 'sales-report', component: SalesReportComponent },
+  { path: 'expenses-dashboard', component: ExpensesDashboardComponent },
 
   { path: 'sign-up', component: SignupComponent },
   { path: 'log-in', component: LoginComponent },
   { path: '', component: SignupComponent },
- 
 ]
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
   anchorScrolling: 'enabled',
   scrollOffset: [0, 64],
-};
+}
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, routerOptions)],

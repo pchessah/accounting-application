@@ -1,0 +1,61 @@
+<div>
+    <mat-card class="dashboard-card">
+        <mat-card-title>Expenses Dashboard</mat-card-title>
+        <div class="info-cards-holder" fxLayout="row" fxLayoutAlign="space-between">
+            <mat-card class="info-cards"> Add Expense</mat-card>
+            <mat-card class="info-cards" (click)="viewExpensesReport()"> View Expense Report</mat-card>
+            <mat-card class="info-cards">My Account</mat-card>
+            <mat-card class="info-cards" (click)="goToMainDashboard()">Main Dashboard</mat-card>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>Search Expense</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Transport" #input>
+              </mat-form-field>
+              
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+              
+                  <!-- Expense name Column -->
+                  <ng-container matColumnDef="expense_name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Expense Name </th>
+                    <td mat-cell *matCellDef="let row"> {{row.expense_name}} </td>
+                  </ng-container>
+              
+                  <!-- Cost Column -->
+                  <ng-container matColumnDef="expense_cost">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cost </th>
+                    <td mat-cell *matCellDef="let row"> {{row.cost}}  </td>
+                  </ng-container>
+              
+              
+                  <!-- Date Column -->
+                  <ng-container matColumnDef="expense_date">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                    <td mat-cell *matCellDef="let row"> {{row.expense_date}} </td>
+                  </ng-container>
+
+                   <!-- Edit Expense Column -->
+                   <ng-container matColumnDef="edit_expense">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit Expense </th>
+                    <td mat-cell *matCellDef="let row"> <button mat-raised-button color="primary"><i class="far fa-edit"></i></button></td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              
+                  <!-- Row shown when there is no matching data. -->
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                  </tr>
+                </table>
+              
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+              </div>
+              
+        </div>
+
+       
+    </mat-card>
+</div>

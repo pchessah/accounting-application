@@ -25,7 +25,8 @@ import { EditStockComponent } from './storeowner/inventory/edit-stock/edit-stock
 import { SalesDashboardComponent } from './storeowner/sales/sales-dashboard/sales-dashboard.component';
 import { AddSaleComponent } from './storeowner/sales/add-sale/add-sale.component';
 import { ViewSalesReportComponent } from './storeowner/sales/view-sales-report/view-sales-report.component';
-import { SalesReportComponent } from './storeowner/sales/sales-report/sales-report.component'
+import { SalesReportComponent } from './storeowner/sales/sales-report/sales-report.component';
+import { ExpensesDashboardComponent } from './storeowner/expenses/expenses-dashboard/expenses-dashboard.component'
 
 const MATMODULES = [
   MatDialogModule,
@@ -52,6 +53,7 @@ const MATMODULES = [
     AddSaleComponent,
     ViewSalesReportComponent,
     SalesReportComponent,
+    ExpensesDashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,80 @@
+.dashboard-card{
+    margin: 5%;
+}
+
+.dashboard-card > mat-card-title{
+    font-size: small;
+}
+.info-cards{
+    padding: 20px 10px;
+    width: 30%;
+    margin: 3px;
+}
+
+mat-card > .info-cards :hover{
+    cursor: pointer !important;
+}
+
+.info-cards-holder{
+    flex-direction: row;
+    flex-wrap: wrap !important;
+}
+
+.menu-items > div{
+    background-color: aliceblue;
+    padding: 2% 1px;
+    margin: 10px 0px;
+    width: 100%;
+}
+
+i{
+    margin: 5px;
+    padding: 5px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    font-weight: 900;
+}
+
+table{
+    width: 100% !important;
+}
+
+input{
+    width: 30px;
+    height: 12px;
+    border-radius: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+    padding: 3px !important;
+}
+
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type{
+    padding-left: 14px !important;
+}
+
+th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type{
+    padding-right: 14px !important;
+}
+
+button{
+    margin-right: 4px;
+}
