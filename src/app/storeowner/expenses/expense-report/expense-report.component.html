@@ -2,8 +2,8 @@
     <mat-card class="dashboard-card">
         <mat-card-title>Expense Report on {{ date }} </mat-card-title>
         <div class="info-cards-holder" fxLayout="row" fxLayoutAlign="space-between">
-            <mat-card class="info-cards" (click)="pickDate()">Pick Date</mat-card>
-            <mat-card class="info-cards" (click)="goToSalesDashboard()"> Sales Dashboard </mat-card>
+            <mat-card class="info-cards">Pick Date</mat-card>
+            <mat-card class="info-cards" (click)="goToExpensesDashboard()"> Expense Dashboard </mat-card>
             <mat-card class="info-cards">My Account</mat-card>
             <mat-card class="info-cards" (click)="goToMainDashboard()">Main Dashboard</mat-card>
         </div>
