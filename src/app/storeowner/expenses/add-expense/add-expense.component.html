@@ -1,0 +1,25 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxFill>
+    <mat-card fxLayout="column" fxLayoutAlign="center center">
+        <h3> <strong>Add Expense</strong> </h3>
+      <form  fxFill>
+        <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+
+          <input type="text" placeholder="Enter Expense Name" formControlName="expense_name" required>
+          <input type="number" placeholder="Enter Cost" formControlName="cost" required>
+          <input type="date" placeholder="Enter Expense Date" formControlName="expense_date" required>        
+        
+
+        <button (click)="save()" mat-raised-button type="submit">
+            <i class="fas fa-save"></i> Save
+        </button>
+       
+        </div>
+  
+        <div class="container" fxLayout="row" fxLayoutAlign="space-between" fxFill>
+          <p (click)="cancel()">Cancel</p> <br>
+        </div>
+      </form>
+  
+    </mat-card>
+  
+  </div>

@@ -26,7 +26,10 @@ import { SalesDashboardComponent } from './storeowner/sales/sales-dashboard/sale
 import { AddSaleComponent } from './storeowner/sales/add-sale/add-sale.component';
 import { ViewSalesReportComponent } from './storeowner/sales/view-sales-report/view-sales-report.component';
 import { SalesReportComponent } from './storeowner/sales/sales-report/sales-report.component';
-import { ExpensesDashboardComponent } from './storeowner/expenses/expenses-dashboard/expenses-dashboard.component'
+import { ExpensesDashboardComponent } from './storeowner/expenses/expenses-dashboard/expenses-dashboard.component';
+import { AddExpenseComponent } from './storeowner/expenses/add-expense/add-expense.component';
+import { ExpenseReportComponent } from './storeowner/expenses/expense-report/expense-report.component';
+import { CashFlowManagerComponent } from './storeowner/cash-flow/cash-flow-manager/cash-flow-manager.component'
 
 const MATMODULES = [
   MatDialogModule,
@@ -54,6 +57,9 @@ const MATMODULES = [
     ViewSalesReportComponent,
     SalesReportComponent,
     ExpensesDashboardComponent,
+    AddExpenseComponent,
+    ExpenseReportComponent,
+    CashFlowManagerComponent,
   ],
   imports: [
     BrowserModule,

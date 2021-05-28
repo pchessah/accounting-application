@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { AddExpenseComponent } from '../add-expense/add-expense.component';
 
 @Component({
   selector: 'app-expenses-dashboard',
@@ -37,6 +38,7 @@ export class ExpensesDashboardComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
+  singleExpense: any;
 
   constructor(public dialog: MatDialog, public router: Router)  {
     this.dataSource = new MatTableDataSource(this.expenseData)
@@ -65,7 +67,20 @@ export class ExpensesDashboardComponent implements OnInit {
   }
 
   viewExpensesReport(){
+    this.router.navigateByUrl("/expense-report")
 
+  }
+
+  addExpense(): void {
+    const dialogRef = this.dialog.open(AddExpenseComponent, {
+      width: '400px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.singleExpense = result;
+    });
   }
 
 }

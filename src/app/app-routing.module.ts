@@ -11,6 +11,7 @@ import { InventoryManagerComponent } from './storeowner/inventory/inventory-mana
 import { SalesDashboardComponent } from './storeowner/sales/sales-dashboard/sales-dashboard.component'
 import { SalesReportComponent } from './storeowner/sales/sales-report/sales-report.component'
 import { ExpensesDashboardComponent } from './storeowner/expenses/expenses-dashboard/expenses-dashboard.component'
+import { ExpenseReportComponent } from './storeowner/expenses/expense-report/expense-report.component'
 
 const routes: Routes = [
   { path: 'store-setup', component: StoreSetupComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'sales-dashboard', component: SalesDashboardComponent },
   { path: 'sales-report', component: SalesReportComponent },
   { path: 'expenses-dashboard', component: ExpensesDashboardComponent },
+  { path: "expense-report", component: ExpenseReportComponent},
 
   { path: 'sign-up', component: SignupComponent },
   { path: 'log-in', component: LoginComponent },
