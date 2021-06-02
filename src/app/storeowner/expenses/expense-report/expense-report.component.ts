@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 })
 export class ExpenseReportComponent implements OnInit {
 
+  date: any;
+
+
   displayedColumns: string[] = [
     "expense_name",
     "expense_cost",
@@ -45,6 +48,7 @@ export class ExpenseReportComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.expenseData)
+    this.getCurrentDate()
   }
 
   ngAfterViewInit() {
@@ -73,6 +77,15 @@ export class ExpenseReportComponent implements OnInit {
   goToExpensesDashboard(){
     this.router.navigateByUrl("/expenses-dashboard")
   }
+
+  getCurrentDate(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    this.date = mm + '/' + dd + '/' + yyyy;
+  }
+
 
 
 }
