@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { AddProductComponent } from '../add-product/add-product.component';
 import { Router } from '@angular/router';
 import { IproductData } from "../../../libs/interfaces/IproductData"
+import { ProductService } from 'src/app/libs/services/product.service';
 
 
 
@@ -15,6 +16,7 @@ import { IproductData } from "../../../libs/interfaces/IproductData"
   styleUrls: ['./inventory-dashboard.component.scss'],
 })
 export class InventoryDashboardComponent implements AfterViewInit {
+  allProducts: any;
   singleProduct: IproductData = {
     stock_name: '',
     quantity: '',
@@ -28,26 +30,13 @@ export class InventoryDashboardComponent implements AfterViewInit {
     'buying_price',
     'selling_price',
   ]
-  productData: IproductData[] = [
-    {
-      stock_name: 'Guiness 500ml',
-      quantity: '20',
-      buying_price: '150',
-      selling_price: '220',
-    },
-    {
-      stock_name: 'Tusker 500ml',
-      quantity: '10',
-      buying_price: '150',
-      selling_price: '200',
-    },
-  ]
+  productData = undefined
   dataSource: MatTableDataSource<IproductData>
 
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
 
-  constructor(public dialog: MatDialog, public router: Router) {
+  constructor(public dialog: MatDialog, public router: Router, private productService: ProductService,) {
     this.dataSource = new MatTableDataSource(this.productData)
     
   }
@@ -68,7 +57,20 @@ export class InventoryDashboardComponent implements AfterViewInit {
     this.router.navigateByUrl("/inventory-manager")
   }
 
+  getAllProducts(): void {
+    this.productService.getAllProducts().subscribe(products => {
+      this.allProducts = products.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as {}
+        } as {}
+      })
+    });
+  }
+
   ngOnInit(): void {
+    this.getAllProducts()
+    console.log(this.allProducts);
     this.dataSource = new MatTableDataSource(this.productData)
   }
 
