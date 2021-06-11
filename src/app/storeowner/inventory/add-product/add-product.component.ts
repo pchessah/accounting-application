@@ -10,6 +10,8 @@ import { ProductService } from '../../../libs/services/product.service'
   styleUrls: ['./add-product.component.scss'],
 })
 export class AddProductComponent implements OnInit {
+  allProducts: any;
+
   product: IproductData = {
     stock_name: "",
     quantity: "",
@@ -37,9 +39,22 @@ export class AddProductComponent implements OnInit {
     this.dialogRef.close()
   }
 
+  getAllProducts(): void {
+    this.productService.getAllProducts().subscribe(products => {
+      this.allProducts = products.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as {}
+        } as {}
+      })
+      
+    });
+  }
+
   save() {
     this.product = this.productsForm.value;
     this.productService.addProduct(this.product)
+    this.getAllProducts()
     this.dialogRef.close()
   }
 

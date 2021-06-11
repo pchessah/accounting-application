@@ -2,13 +2,15 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { AddProductComponent } from '../add-product/add-product.component';
-import { Router } from '@angular/router';
-import { IproductData } from "../../../libs/interfaces/IproductData"
-import { ProductService } from 'src/app/libs/services/product.service';
-
-
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog'
+import { AddProductComponent } from '../add-product/add-product.component'
+import { Router } from '@angular/router'
+import { IproductData } from '../../../libs/interfaces/IproductData'
+import { ProductService } from 'src/app/libs/services/product.service'
 
 @Component({
   selector: 'app-inventory-dashboard',
@@ -16,7 +18,7 @@ import { ProductService } from 'src/app/libs/services/product.service';
   styleUrls: ['./inventory-dashboard.component.scss'],
 })
 export class InventoryDashboardComponent implements AfterViewInit {
-  allProducts: any;
+  allProducts: any
   singleProduct: IproductData = {
     stock_name: '',
     quantity: '',
@@ -36,41 +38,45 @@ export class InventoryDashboardComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
 
-  constructor(public dialog: MatDialog, public router: Router, private productService: ProductService,) {
+  constructor(
+    public dialog: MatDialog,
+    public router: Router,
+    private productService: ProductService,
+  ) {
     this.dataSource = new MatTableDataSource(this.productData)
-    
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddProductComponent, {
       width: '400px',
-      data: {}
-    });
+      data: {},
+    })
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.singleProduct = result;
-    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed')
+      this.singleProduct = result
+    })
   }
 
   openInventoryManager(): void {
-    this.router.navigateByUrl("/inventory-manager")
+    this.router.navigateByUrl('/inventory-manager')
   }
 
   getAllProducts(): void {
-    this.productService.getAllProducts().subscribe(products => {
-      this.allProducts = products.map(e => {
+    this.productService.getAllProducts().subscribe((products) => {
+      this.allProducts = products.map((e) => {
         return {
           id: e.payload.doc.id,
-          ...e.payload.doc.data() as {}
+          ...(e.payload.doc.data() as {}),
         } as {}
       })
-    });
+      this.dataSource = new MatTableDataSource(this.allProducts)
+    })
   }
 
   ngOnInit(): void {
     this.getAllProducts()
-    console.log(this.allProducts);
+    console.log(this.allProducts)
     this.dataSource = new MatTableDataSource(this.productData)
   }
 
@@ -88,8 +94,7 @@ export class InventoryDashboardComponent implements AfterViewInit {
     }
   }
 
-  goToMainDashboard(){
-    this.router.navigateByUrl("/dashboard")
+  goToMainDashboard() {
+    this.router.navigateByUrl('/dashboard')
   }
 }
-
