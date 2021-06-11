@@ -4,8 +4,6 @@ import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
 import {
   MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
 } from '@angular/material/dialog'
 import { AddProductComponent } from '../add-product/add-product.component'
 import { Router } from '@angular/router'

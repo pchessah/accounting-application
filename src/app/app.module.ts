@@ -12,10 +12,12 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatInputModule } from '@angular/material/input'
 import { MatDialogModule } from '@angular/material/dialog'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 import { environment } from 'src/environments/environment'
 import { AngularFireModule } from '@angular/fire'
 import { AngularFirestoreModule } from '@angular/fire/firestore'
+import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { AppComponent } from './app.component'
 import { SignupComponent } from './components/signup/signup.component'
@@ -34,7 +36,9 @@ import { SalesReportComponent } from './storeowner/sales/sales-report/sales-repo
 import { ExpensesDashboardComponent } from './storeowner/expenses/expenses-dashboard/expenses-dashboard.component'
 import { AddExpenseComponent } from './storeowner/expenses/add-expense/add-expense.component'
 import { ExpenseReportComponent } from './storeowner/expenses/expense-report/expense-report.component'
-import { CashFlowManagerComponent } from './storeowner/cash-flow/cash-flow-manager/cash-flow-manager.component'
+import { CashFlowManagerComponent } from './storeowner/cash-flow/cash-flow-manager/cash-flow-manager.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component'
 
 const MATMODULES = [
   MatDialogModule,
@@ -43,6 +47,7 @@ const MATMODULES = [
   MatFormFieldModule,
   MatPaginatorModule,
   MatInputModule,
+  MatSnackBarModule,
 ]
 
 @NgModule({
@@ -65,6 +70,8 @@ const MATMODULES = [
     AddExpenseComponent,
     ExpenseReportComponent,
     CashFlowManagerComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +82,7 @@ const MATMODULES = [
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireAuthModule,
     ...MATMODULES,
   ],
   providers: [],
