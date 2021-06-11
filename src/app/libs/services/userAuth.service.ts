@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from "../services/user";
-import { auth } from 'firebase/app';
+import  auth  from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
@@ -33,69 +33,45 @@ export class userAuthService {
   }
 
   // Sign in with email/password
-  SignIn(email, password) {
+  SignIn(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then((result: { user: any; }) => {
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
         });
         this.SetUserData(result.user);
-      }).catch((error) => {
+      }).catch((error: { message: any; }) => {
         window.alert(error.message)
       })
   }
 
   // Sign up with email/password
-  SignUp(email, password) {
+  SignUp(email: any, password: any) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then((result: { user: any; }) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
         this.SendVerificationMail();
         this.SetUserData(result.user);
-      }).catch((error) => {
+      }).catch((error: { message: any; }) => {
         window.alert(error.message)
       })
-  }
-
-  // Send email verfificaiton when new user sign up
-  SendVerificationMail() {
-    return this.afAuth.auth.currentUser.sendEmailVerification()
-    .then(() => {
-      this.router.navigate(['verify-email-address']);
-    })
-  }
-
-  // Reset Forggot password
-  ForgotPassword(passwordResetEmail) {
-    return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
-    .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
-    }).catch((error) => {
-      window.alert(error)
-    })
-  }
-
-  // Returns true when user is looged in and email is verified
-  get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : false;
   }
 
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider());
-  }
+  }  
 
   // Auth logic to run auth providers
-  AuthLogin(provider) {
+  AuthLogin(provider: any) {
     return this.afAuth.auth.signInWithPopup(provider)
-    .then((result) => {
+    .then((result: { user: any; }) => {
        this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
         })
       this.SetUserData(result.user);
-    }).catch((error) => {
+    }).catch((error: any) => {
       window.alert(error)
     })
   }
@@ -103,7 +79,7 @@ export class userAuthService {
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user) {
+  SetUserData(user: { uid: any; email: any; displayName: any; photoURL: any; emailVerified: any; }) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
