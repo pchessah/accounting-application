@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center" fxFill>
     <mat-card fxLayout="column" fxLayoutAlign="center center">
         <h3> <strong>Accounting App</strong> </h3>
-        <form  fxFill>
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()"  fxFill>
             <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
                 <img src="../../../assets/images/calc-logo.png" alt="logo" />
                 <h5>Sign Up</h5>

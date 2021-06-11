@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule, ExtraOptions } from '@angular/router'
+import { AuthGuard } from "../app/libs/guards/auth.guard"
+
+
 import { SignupComponent } from '../app/components/signup/signup.component'
 import { LoginComponent } from '../app/components/login/login.component'
 import { StoreSetupComponent } from './storeowner/store-setup/store-setup.component'
@@ -13,23 +16,22 @@ import { SalesReportComponent } from './storeowner/sales/sales-report/sales-repo
 import { ExpensesDashboardComponent } from './storeowner/expenses/expenses-dashboard/expenses-dashboard.component'
 import { ExpenseReportComponent } from './storeowner/expenses/expense-report/expense-report.component'
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component'
-import { VerifyEmailComponent } from './components/verify-email/verify-email.component'
+
 
 const routes: Routes = [
-  { path: 'store-setup', component: StoreSetupComponent },
-  { path: 'add-attendant', component: AddAttendantComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'store-setup', component: StoreSetupComponent, canActivate: [AuthGuard] },
+  { path: 'add-attendant', component: AddAttendantComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
-  { path: 'add-product', component: AddProductComponent },
-  { path: 'inventory-dashboard', component: InventoryDashboardComponent },
-  { path: 'inventory-manager', component: InventoryManagerComponent },
-  { path: 'sales-dashboard', component: SalesDashboardComponent },
-  { path: 'sales-report', component: SalesReportComponent },
-  { path: 'expenses-dashboard', component: ExpensesDashboardComponent },
-  { path: "expense-report", component: ExpenseReportComponent},
+  { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard] },
+  { path: 'inventory-dashboard', component: InventoryDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'inventory-manager', component: InventoryManagerComponent, canActivate: [AuthGuard]},
+  { path: 'sales-dashboard', component: SalesDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'sales-report', component: SalesReportComponent, canActivate: [AuthGuard] },
+  { path: 'expenses-dashboard', component: ExpensesDashboardComponent, canActivate: [AuthGuard] },
+  { path: "expense-report", component: ExpenseReportComponent, canActivate: [AuthGuard]},
 
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'sign-up', component: SignupComponent },
   { path: 'log-in', component: LoginComponent },
   { path: '', component: SignupComponent },

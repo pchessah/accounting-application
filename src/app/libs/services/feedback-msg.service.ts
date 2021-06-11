@@ -13,7 +13,7 @@ export class FeedbackMsgService {
   constructor( private _snackBar: MatSnackBar ) { }
 
   feedBackMsg( message: string) {
-    this._snackBar.open( `${message}` , 'Splash', {
+    this._snackBar.open( `${message}` , 'close', {
      
     });
   }
