@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center" fxFill>
     <mat-card fxLayout="column" fxLayoutAlign="center center">
         <h3> <strong>Accounting App</strong> </h3>
-        <form [formGroup]="signUpForm" (ngSubmit)="signUp()"  fxFill>
+        <form [formGroup]="signUpForm"  fxFill>
             <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
                 <img src="../../../assets/images/calc-logo.png" alt="logo" />
                 <h5>Sign Up</h5>
@@ -15,6 +15,10 @@
                 <input type="email" placeholder="Enter Email" formControlName="email" required>
 
                 <input type="password" placeholder="Enter Password" formControlName="password" required>
+
+                <input type="text" placeholder="Enter Store Name" formControlName="store_name" required>
+
+                <input type="text" placeholder="Enter Type of Store" formControlName="store_type" required>
 
                 <button mat-raised-button type="submit" (click)="signUp()">
                     <i class="fas fa-store"></i> Sign up as Store Owner

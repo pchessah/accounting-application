@@ -18,6 +18,8 @@ export class SignupComponent implements OnInit {
     secondName: [''],
     email: [''],
     password: [''],
+    store_name:[""],
+    store_type:[""]
   })
 
   ngOnInit(): void {}
@@ -25,6 +27,8 @@ export class SignupComponent implements OnInit {
   signUp() {
     let email = this.signUpForm.value.email
     let password = this.signUpForm.value.password
-    this.userAuthService.SignUp(email, password)
+    let store_name = this.signUpForm.value.store_name
+    let store_type = this.signUpForm.value.store_type
+    this.userAuthService.SignUp(email, password,store_name, store_type)
   }
 }

@@ -7,6 +7,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/firestore'
 import { Router } from '@angular/router'
+import { first, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +44,7 @@ export class userAuthService {
           this.router.navigate(['dashboard'])
         })
         this.SetUserData(result.user)
+        window.alert('signed in')
       })
       .catch((error: { message: any }) => {
         window.alert(error.message)
@@ -50,20 +52,32 @@ export class userAuthService {
   }
 
   // Sign up with email/password
-  SignUp(email: string, password: string) {
+  SignUp(
+    email: string,
+    password: string,
+    storeName: string,
+    storeType: string,
+  ) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
-      .then((result: { user: any }) => {
+      .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
-        this.SendVerificationMail();
+        //this.SendVerificationMail()
         this.SetUserData(result.user)
-        result.user.sendEmailVerification()
+        this.setOtherUserDetails(result.user, storeName, storeType)
+        window.alert('signed up')
+        this.router.navigate(['log-in'])
       })
-      .catch((error: { message: any }) => {
+      .catch((error) => {
         window.alert(error.message)
       })
   }
+
+  //get store name
+  getStoreDetails(user: any){
+    return this.afs.collection("users").snapshotChanges();
+    }
 
   // Sign in with Google
   GoogleAuth() {
@@ -85,25 +99,32 @@ export class userAuthService {
       })
   }
 
+  setOtherUserDetails(user: any, storeName: string, storeType: string) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user?.uid}`,
+    )
+    const otherUserDetails = {
+      storeName: storeName,
+      storeType: storeType,
+    }
+    return userRef.set(otherUserDetails, {
+      merge: true,
+    })
+  }
+
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user: {
-    uid: any
-    email: any
-    displayName: any
-    photoURL: any
-    emailVerified: any
-  }) {
+  SetUserData(user: auth.User | null) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`,
+      `users/${user?.uid}`,
     )
     const userData: any = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
+      uid: user?.uid,
+      email: user?.email,
+      displayName: user?.displayName,
+      photoURL: user?.photoURL,
+      emailVerified: true,
     }
     return userRef.set(userData, {
       merge: true,
@@ -118,12 +139,15 @@ export class userAuthService {
     })
   }
 
-  SendVerificationMail() {
-    return this.afAuth.currentUser
-    .then(() => {
-      this.router.navigate(['verify-email-address']);
-    })
-  }
+  // SendVerificationMail() {
+  //   return this.afAuth.currentUser
+  //     .then((user) => {
+  //       return user?.sendEmailVerification()
+  //     })
+  //     .then(() => {
+  //       this.router.navigate(['verify-email-address'])
+  //     })
+  // }
 
   ForgotPassword(passwordResetEmail: any) {
     return this.afAuth
@@ -136,10 +160,10 @@ export class userAuthService {
       })
   }
 
-  
-
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}')
     return user !== null && user.emailVerified !== false ? true : false
   }
+
+  
 }
