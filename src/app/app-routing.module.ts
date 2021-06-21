@@ -16,6 +16,7 @@ import { SalesReportComponent } from './storeowner/sales/sales-report/sales-repo
 import { ExpensesDashboardComponent } from './storeowner/expenses/expenses-dashboard/expenses-dashboard.component'
 import { ExpenseReportComponent } from './storeowner/expenses/expense-report/expense-report.component'
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component'
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'expenses-dashboard', component: ExpensesDashboardComponent, canActivate: [AuthGuard] },
   { path: "expense-report", component: ExpenseReportComponent, canActivate: [AuthGuard]},
 
+  { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'sign-up', component: SignupComponent },
   { path: 'log-in', component: LoginComponent },
