@@ -56,7 +56,7 @@ export class userAuthService {
       .then((result: { user: any }) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
-        //this.SendVerificationMail();
+        this.SendVerificationMail();
         this.SetUserData(result.user)
         result.user.sendEmailVerification()
       })
@@ -118,6 +118,13 @@ export class userAuthService {
     })
   }
 
+  SendVerificationMail() {
+    return this.afAuth.currentUser
+    .then(() => {
+      this.router.navigate(['verify-email-address']);
+    })
+  }
+
   ForgotPassword(passwordResetEmail: any) {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
@@ -128,6 +135,8 @@ export class userAuthService {
         window.alert(error)
       })
   }
+
+  
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}')
