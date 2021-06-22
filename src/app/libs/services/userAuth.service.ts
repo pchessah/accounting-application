@@ -165,5 +165,4 @@ export class userAuthService {
     return user !== null && user.emailVerified !== false ? true : false
   }
 
-  
 }
