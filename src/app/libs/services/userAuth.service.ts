@@ -14,6 +14,7 @@ import { first, tap } from 'rxjs/operators';
 })
 export class userAuthService {
   userData: any // Save logged in user data
+  currentLoggedInUser: any //current user logged in
 
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
@@ -35,6 +36,18 @@ export class userAuthService {
     })
   }
 
+  //GET CURRENT LOGGED IN USER
+  getCurrentUser(){
+    return this.afAuth.currentUser.then((user)=>{
+      return user?.email
+    })
+  }
+
+    //get all users
+    getAllUsers(){
+      return this.afs.collection("users").snapshotChanges();
+      }
+
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return this.afAuth
@@ -44,6 +57,7 @@ export class userAuthService {
           this.router.navigate(['dashboard'])
         })
         this.SetUserData(result.user)
+        this.router.navigate(['dashboard'])
         window.alert('signed in')
       })
       .catch((error: { message: any }) => {
@@ -74,10 +88,7 @@ export class userAuthService {
       })
   }
 
-  //get store name
-  getStoreDetails(user: any){
-    return this.afs.collection("users").snapshotChanges();
-    }
+
 
   // Sign in with Google
   GoogleAuth() {
@@ -162,7 +173,7 @@ export class userAuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}')
-    return user !== null && user.emailVerified !== false ? true : false
+    return user !== null !== false ? true : false
   }
 
 }
