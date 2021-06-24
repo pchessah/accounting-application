@@ -23,9 +23,7 @@ export class DashboardComponent implements OnInit {
 
   //GET USER LOGGED IN CURRENTLY
   getCurrentUser(){
-    this.userAuthService.getCurrentUser().then((user)=>{
-      this.currentUser = user
-    })
+    this.currentUser = this.userAuthService.getCurrentUser().email
   }
 
   //GET STORE NAME
@@ -38,11 +36,9 @@ export class DashboardComponent implements OnInit {
         } 
       })
 
-      this.storeName = this.stores.filter((store) => {
-        store.uid == this.currentUser.uid
-      }).join("")      
+      console.log(this.stores);
     })
-    debugger
+   
   }
 
 }

@@ -1,0 +1,7 @@
+<div *ngIf="loggedIn" >
+    <a [routerLink]="['/log-in']" routerLinkActive="router-link-active">[ Log In ]</a>
+</div>
+
+<div>
+    <a *ngIf="loggedOut" (click)="logOut()" routerLinkActive="router-link-active">[ Log Out ]</a>    
+</div>

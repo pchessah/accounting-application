@@ -38,9 +38,8 @@ export class userAuthService {
 
   //GET CURRENT LOGGED IN USER
   getCurrentUser(){
-    return this.afAuth.currentUser.then((user)=>{
-      return user?.email
-    })
+    return JSON.parse(localStorage.getItem("user") || "{}")
+ 
   }
 
     //get all users

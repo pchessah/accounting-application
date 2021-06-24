@@ -39,6 +39,7 @@ import { ExpenseReportComponent } from './storeowner/expenses/expense-report/exp
 import { CashFlowManagerComponent } from './storeowner/cash-flow/cash-flow-manager/cash-flow-manager.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { AuthCheckerComponent } from './components/auth-checker/auth-checker.component';
 
 
 const MATMODULES = [
@@ -73,6 +74,7 @@ const MATMODULES = [
     CashFlowManagerComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
+    AuthCheckerComponent,
   ],
   imports: [
     BrowserModule,
