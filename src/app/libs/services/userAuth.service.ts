@@ -1,5 +1,4 @@
 import { Injectable, NgZone } from '@angular/core'
-//import { User } from "../services/user";
 import auth from 'firebase/app'
 import { AngularFireAuth } from '@angular/fire/auth'
 import {
@@ -7,7 +6,6 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/firestore'
 import { Router } from '@angular/router'
-import { first, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +19,7 @@ export class userAuthService {
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
+    
   ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -34,6 +33,17 @@ export class userAuthService {
         JSON.parse(localStorage.getItem('user') || '{}')
       }
     })
+  }
+
+  loggedInUserChecker(loggedIn: boolean, loggedOut: boolean){
+    if (localStorage.getItem('user') !== null) {
+      loggedIn = true
+      loggedOut = false
+  } else {
+      loggedIn = false
+      loggedOut = true
+  }
+    
   }
 
   //GET CURRENT LOGGED IN USER
