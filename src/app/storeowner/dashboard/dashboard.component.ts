@@ -8,9 +8,7 @@ import { userAuthService } from 'src/app/libs/services/userAuth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor( private userAuthService: userAuthService ) { 
-    this.getCurrentUser()
-  }
+  constructor( private userAuthService: userAuthService ) { }
   currentUser: any
   stores: any[] = []
   storeName: string =""
@@ -36,7 +34,7 @@ export class DashboardComponent implements OnInit {
         } 
       })
 
-      console.log(this.stores);
+      
     })
    
   }
